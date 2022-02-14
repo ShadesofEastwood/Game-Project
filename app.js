@@ -1,1 +1,1 @@
-console.log("ZA WURLDO")
+console.log("ZA WARUDO")
