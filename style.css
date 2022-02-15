@@ -10,9 +10,7 @@ body {
     text-align:center;
 }
 
-#buttonDiv {
-    text-align: center;
-}
+
 
 #modal {
     display:none;
@@ -28,14 +26,36 @@ body {
 }
 
 #modal-content {
-    background-color: #fefefe;
-    margin: 10% auto; 
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    background-color: black;
+    margin: 5% auto; 
     padding: 3em;
     border: 1px solid #888;
     width: 50%;
-    height: 10%; 
-    font-size:40px;
+    height: auto; 
+    font-size:14px;
     border-radius: 20%;
+}
+
+#question {
+    grid-column: span 4/4;
+}
+
+#option1 {
+    grid-column: span 2/2;
+   
+}
+#option2 {
+    grid-column: span 2/4;
+   
+}
+#option3 {
+    grid-column: span 2/2;
+}
+#option4 {
+    grid-column: span 2/4;
 }
 
 #timer {

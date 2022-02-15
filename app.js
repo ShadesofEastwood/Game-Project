@@ -1,33 +1,99 @@
 console.log("ZA WARUDO");
 
-/* The flashCard class will be used to create keys that correspond to the flash cards keyword and its defintion. Using this.key we can populate the modal easily.*/
+/* The questions class will be used to create keys that correspond to the flash cards keyword and its defintion. Using this.key we can populate the modal easily.*/
 
-class flashCard {
-    constructor(keyword, definition) {
-      this.keyword = keyword;
-      this.definition = definition;
-      this.value = "incorrect";
+class questions {
+    constructor(question, answer1,answer2,answer3,answer4,key) {
+      this.question = question
+      this.answer1 = answer1
+      this.answer2 = answer2
+        this.answer3 = answer3
+        this.answer4 = answer4
+        this.key = key
     }
   }
   
-  /* These are where the flashcards are created and stored into an array for easy access. */
+  /* These are where the questions and images are created and stored into an array for easy access. */
+
+  /* QUESTION 01 */
+
+  const starplatinumImage = document.createElement('img')
+
+  const anubisImage = document.createElement('img')
+
+  const darkbluemoonImage = document.createElement('img')
+
+  const deathImage = document.createElement('img')
+
+  const starplatinumstatsImage = document.createElement('img')
+
+  starplatinumImage.src= "images/starPlatinum.png"
+
+  anubisImage.src = "images/anubisStats.png"
+
+  darkbluemoonImage.src = "images/darkbluemoonStats.png"
+
+  deathImage.src = "images/deathStats.png"
+
+  starplatinumstatsImage.src = "images/starplatinumStats.png"
+
+  starplatinumImage.style.height = "240px"
+  starplatinumImage.style.width = "200px"
   
-    theHermit = new flashCard("The Hermit", "Hermit Purple is the Stand of Joseph Joestar. It is a Close-Range Stand.")
+  anubisImage.style.height = "150px"
+  anubisImage.style.width = "150px"
 
-    theStar = new flashCard("The Star", "Star Platinum is the Stand of Jotaro Kujo. It is a Close-Range Stand.")
+  darkbluemoonImage.style.height = "150px"
+  darkbluemoonImage.style.height = "150px"
 
-    theChariot = new flashCard("The Chariot", "Silver Chariot is the Stand of Jean Pierre Polnareff. It is a Close-Range Stand.")
+  deathImage.style.height = "150px"
+  deathImage.style.width = "150px"
 
-    theHierophant = new flashCard("The Hierophant", "Hierophant Green is the Stand of Noriaki Kakyoin. It is a Long-Distance Stand.")
+  starplatinumstatsImage.style.height = "150px"
+  starplatinumstatsImage.style.width = "150px"
 
-    theMagician = new flashCard("The Magician", "Magician's Red is the Stand of Muhammad Avdol. It is a Close-Range Stand.")
+  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage)
 
-    theFool = new flashCard("The Fool", "The Fool is the Stand of Iggy. It is a Close-Range Stand.")
-  
-  
-  deck1 = [theHermit,theStar,theChariot,theHierophant,theFool,theMagician]
-  deck2 = []
-  deck3 = []
+  /* QUESTION 02 */
+
+  const hermitpurpleImage = document.createElement('img')
+
+  const ebonydevilImage = document.createElement('img')
+
+  const emperorImage = document.createElement('img')
+
+  const empressImage = document.createElement('img')
+
+  const hermitpurplestatsImage = document.createElement('img')
+
+  hermitpurpleImage.src = "images/hermitPurple.png"
+
+  ebonydevilImage.src = "images/ebonydevilStats.png"
+
+  emperorImage.src = "images/emperorStats.png"
+
+  empressImage.src = "images/empressStats.png"
+
+  hermitpurplestatsImage.src = "images/hermitpurpleStats.png"
+
+  hermitpurpleImage.style.height = "260px"
+  hermitpurpleImage.style.width = "230px"
+
+  ebonydevilImage.style.height = "150px"
+  ebonydevilImage.style.width = "150px"
+
+  emperorImage.style.height = "150px"
+  emperorImage.style.width = "150px"
+
+  empressImage.style.height = "150px"
+  empressImage.style.width = "150px"
+
+  hermitpurplestatsImage.style.height = "150px"
+  hermitpurplestatsImage.style.width = "150px"
+
+  question2 = new questions(hermitpurpleImage,ebonydevilImage,emperorImage,empressImage,hermitpurplestatsImage)
+
+  questionArray = [question1,question2]
 
 /* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. */
 
@@ -37,12 +103,17 @@ document.getElementById("startButton").addEventListener("click", function () {
 });
 
 function startGame() {
-  document.getElementById("modal-content").innerText = `${
-    deck1[deck1.length - 1].keyword
-  }`;
+    document.getElementById('question').appendChild(hermitpurpleImage)
+
+    document.getElementById("option1").append(questionArray[questionArray.length - 1].answer1)
+
+    document.getElementById("option2").append(questionArray[questionArray.length - 1].answer2)
+
+    document.getElementById("option3").appendChild(questionArray[questionArray.length - 1].answer3)
+
+    document.getElementById("option4").appendChild(questionArray[questionArray.length - 1].answer4)
+
 }
-
-
 
 /* This section below is how the user can operate the flash cards. Either switching to the next one or marking the flash card correct or incorrect.*/
 
@@ -50,24 +121,18 @@ document.onkeydown = function (event) {
   switch (event.keyCode) {
     case 37:
       console.log("Left key is pressed.");
-      document.getElementById("modal-content").innerText = deck1[deck1.length -1].keyword
+      
       break;
     case 38:
       console.log("Up key is pressed.");
-      deck1[deck1.length -1].value = "correct"
+      
       break;
     case 39:
       console.log("Right key is pressed.")
-      document.getElementById("modal-content").innerText = deck1[deck1.length -1].definition;
+      
       break;
     case 40:
       console.log("Down key is pressed.");
-      deck1.pop()
-      if (deck1.length == 0) {
-          document.getElementById("modal").style.display = "none"
-      } else {
-      document.getElementById("modal-content").innerText = deck1[deck1.length -1].keyword
-      }
     
       break;
       
