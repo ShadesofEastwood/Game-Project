@@ -130,8 +130,6 @@ class questions {
 
   question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage)
 
-  
-  
 const magiciansredImage = document.createElement('img')
 
   const judgementImage = document.createElement('img')
@@ -169,10 +167,44 @@ const magiciansredImage = document.createElement('img')
 
   question4 = new questions(magiciansredImage, khnumImage, justiceImage, judgementImage, magiciansredstatsImage)
 
+silverchariotImage = document.createElement('img')
 
- 
+silverchariotstatsImage = document.createElement('img')
 
-  questionArray = [question1,question2,question3,question4]
+loversImage = document.createElement('img')
+
+strengthImage = document.createElement('img')
+
+sunImage = document.createElement('img')
+
+silverchariotImage.src = "images/silverChariot.png"
+
+silverchariotstatsImage.src = "images/silverchariotStats.png"
+
+loversImage.src = "images/loversStats.png"
+
+strengthImage.src = "images/strengthStats.png"
+
+sunImage.src = "images/thesunStats.png"
+
+silverchariotImage.style.height = "240px"
+silverchariotImage.style.width = "220px"
+
+silverchariotstatsImage.style.height = "150px"
+silverchariotstatsImage.style.width = "150px"
+
+loversImage.style.height = "150px"
+loversImage.style.width = "150px"
+
+strengthImage.style.height = "150px"
+strengthImage.style. width = "150px"
+
+sunImage.style.height = "150px"
+sunImage.style.width = "150px"
+
+question5 = new questions(silverchariotImage, loversImage, strengthImage, sunImage, silverchariotstatsImage)
+
+  questionArray = [question1,question2,question3,question4, question5]
 
 /* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. */
 
