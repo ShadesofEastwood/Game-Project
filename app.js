@@ -93,7 +93,44 @@ class questions {
 
   question2 = new questions(hermitpurpleImage,ebonydevilImage,emperorImage,empressImage,hermitpurplestatsImage)
 
-  questionArray = [question1,question2]
+  const hierophantgreenImage = document.createElement('img')
+
+  const hangedmanImage = document.createElement('img')
+
+  const highpriestessImage = document.createElement('img')
+
+  const hierophantgreenstatsImage = document.createElement('img')
+
+  const gebImage = document.createElement('img')
+
+  hierophantgreenImage.src = "images/hierophantGreen.png"
+
+  hangedmanImage.src = "images/hangedmanStats.png"
+
+  highpriestessImage.src = "images/highpriestessStats.png"
+
+  hierophantgreenstatsImage.src = "images/hierophantgreenStats.png"
+
+  gebImage.src = "images/gebStats.png"
+
+  hierophantgreenImage.style.height = "240px"
+  hierophantgreenImage.style.width = "200px"
+
+  hangedmanImage.style.height = "150px"
+  hangedmanImage.style.width = "150px"
+
+  highpriestessImage.style.height = "150px"
+  highpriestessImage.style.width = "150px"
+
+  hierophantgreenstatsImage.style.height = "150px"
+  hierophantgreenstatsImage.style.width = "150px"
+
+  gebImage.style.height = "150px"
+  gebImage.style.width = "150px"
+
+  question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage)
+
+  questionArray = [question1,question2,question3]
 
 /* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. */
 
@@ -103,7 +140,7 @@ document.getElementById("startButton").addEventListener("click", function () {
 });
 
 function startGame() {
-    document.getElementById('question').appendChild(hermitpurpleImage)
+    document.getElementById('question').appendChild(questionArray[questionArray.length - 1].question)
 
     document.getElementById("option1").append(questionArray[questionArray.length - 1].answer1)
 
