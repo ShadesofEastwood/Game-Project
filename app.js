@@ -130,7 +130,49 @@ class questions {
 
   question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage)
 
-  questionArray = [question1,question2,question3]
+  
+  
+const magiciansredImage = document.createElement('img')
+
+  const judgementImage = document.createElement('img')
+
+  const justiceImage = document.createElement('img')
+
+  const magiciansredstatsImage = document.createElement('img')
+
+  const khnumImage = document.createElement('img')
+
+  magiciansredImage.src = "images/magiciansRed.png"
+
+  judgementImage.src = "images/judgementStats.png"
+
+  justiceImage.src = "images/justiceStats.png"
+
+  magiciansredstatsImage.src = "images/magiciansredStats.png"
+
+  khnumImage.src = "images/khnumStats.png"
+
+  magiciansredImage.style.height = "240px"
+  magiciansredImage.style.width = "200px"
+
+  judgementImage.style.height = "150px"
+  judgementImage.style.width = "150px"
+
+  justiceImage.style.height = "150px"
+  justiceImage.style.width = "150px"
+
+  magiciansredstatsImage.style.height = "150px"
+  magiciansredstatsImage.style.width = "150px"
+
+  khnumImage.style.height = "150px"
+  khnumImage.style.width = "150px"
+
+  question4 = new questions(magiciansredImage, khnumImage, justiceImage, judgementImage, magiciansredstatsImage)
+
+
+ 
+
+  questionArray = [question1,question2,question3,question4]
 
 /* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. */
 
