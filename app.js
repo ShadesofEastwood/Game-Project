@@ -52,7 +52,7 @@ class questions {
   starplatinumstatsImage.style.height = "150px"
   starplatinumstatsImage.style.width = "150px"
 
-  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage)
+  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage, 4)
 
   /* QUESTION 02 */
 
@@ -91,7 +91,7 @@ class questions {
   hermitpurplestatsImage.style.height = "150px"
   hermitpurplestatsImage.style.width = "150px"
 
-  question2 = new questions(hermitpurpleImage,ebonydevilImage,emperorImage,empressImage,hermitpurplestatsImage)
+  question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2)
 
   const hierophantgreenImage = document.createElement('img')
 
@@ -128,7 +128,7 @@ class questions {
   gebImage.style.height = "150px"
   gebImage.style.width = "150px"
 
-  question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage)
+  question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1)
 
 const magiciansredImage = document.createElement('img')
 
@@ -165,7 +165,7 @@ const magiciansredImage = document.createElement('img')
   khnumImage.style.height = "150px"
   khnumImage.style.width = "150px"
 
-  question4 = new questions(magiciansredImage, khnumImage, justiceImage, judgementImage, magiciansredstatsImage)
+  question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3)
 
 silverchariotImage = document.createElement('img')
 
@@ -202,23 +202,23 @@ strengthImage.style. width = "150px"
 sunImage.style.height = "150px"
 sunImage.style.width = "150px"
 
-question5 = new questions(silverchariotImage, loversImage, strengthImage, sunImage, silverchariotstatsImage)
+question5 = new questions(silverchariotImage, silverchariotstatsImage, loversImage, strengthImage, sunImage, 1)
 
-  questionArray = [question1,question2,question3,question4, question5]
+  questionArray = [question1,question2,question3,question4,question5]
 
 /* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. */
 
 document.getElementById("startButton").addEventListener("click", function () {
   document.getElementById("modal").style.display = "block";
-  startGame();
+  populate();
 });
 
-function startGame() {
+function populate() {
     document.getElementById('question').appendChild(questionArray[questionArray.length - 1].question)
 
-    document.getElementById("option1").append(questionArray[questionArray.length - 1].answer1)
+    document.getElementById("option1").appendChild(questionArray[questionArray.length - 1].answer1)
 
-    document.getElementById("option2").append(questionArray[questionArray.length - 1].answer2)
+    document.getElementById("option2").appendChild(questionArray[questionArray.length - 1].answer2)
 
     document.getElementById("option3").appendChild(questionArray[questionArray.length - 1].answer3)
 
@@ -228,19 +228,38 @@ function startGame() {
 
 /* This section below is how the user can operate the flash cards. Either switching to the next one or marking the flash card correct or incorrect.*/
 
+function clearBox(elementID)
+{
+    document.getElementById(elementID).innerHTML = "";
+}
+
 document.onkeydown = function (event) {
   switch (event.keyCode) {
     case 37:
       console.log("Left key is pressed.");
+    
       
       break;
     case 38:
       console.log("Up key is pressed.");
-      
+  
       break;
     case 39:
       console.log("Right key is pressed.")
-      
+
+      if (questionArray.length > 1) {
+      questionArray.pop()
+      clearBox("question")
+      clearBox("option1")
+      clearBox("option2")
+      clearBox("option3")
+      clearBox("option4")
+      populate()
+      } else {
+        console.log("finished")
+        document.getElementById("modal").style.display = "none"
+      }
+    
       break;
     case 40:
       console.log("Down key is pressed.");
@@ -249,6 +268,37 @@ document.onkeydown = function (event) {
       
   }
 };
+
+/* Below is for creating eventlisteners to select a choice for the questions. */
+
+document.getElementById("option1").addEventListener("click", function () {
+if (questionArray[questionArray.length - 1].key !== 1) {
+  alert("Incorrect!")
+} else { alert("Correct!")}
+})
+
+document.getElementById("option2").addEventListener("click", function () {
+  if (questionArray[questionArray.length - 1].key !== 2) {
+    alert("Incorrect!")
+  } else { alert("Correct!")}
+  })
+  
+  document.getElementById("option3").addEventListener("click", function () {
+    if (questionArray[questionArray.length - 1].key !== 3) {
+      alert("Incorrect!")
+    } else { alert("Correct!")}
+    })
+    
+    document.getElementById("option4").addEventListener("click", function () {
+      if (questionArray[questionArray.length - 1].key !== 4) {
+        alert("Incorrect!")
+      } else { alert("Correct!")}
+      })
+      
+
+
+
+
 
 /*The myTimer function is for keeping track of how long the user takes to complete the flashcards. It adds 1 to a number variable and then using DOM manipulation, places that new number into the document every second.*/
 
