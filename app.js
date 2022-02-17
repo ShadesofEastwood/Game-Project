@@ -1,6 +1,6 @@
 console.log("ZA WARUDO");
 
-/* The questions class will be used to create keys that correspond to the flash cards keyword and its defintion. Using this.key we can populate the modal easily.*/
+/* Using questions as a class object to tie the correct answer and images to what will be used to populate the modal.*/
 
 class questions {
     constructor(question, answer1,answer2,answer3,answer4,key) {
@@ -208,9 +208,30 @@ question5 = new questions(silverchariotImage, silverchariotstatsImage, loversIma
 
 /* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. */
 
+var seconds = 0
+var minutes = 0
+
 document.getElementById("startButton").addEventListener("click", function () {
   document.getElementById("modal").style.display = "block";
   populate();
+
+  var timer = setInterval(myTimer,1000)
+
+
+
+document.getElementById("timer").innerText = `Timer: ${minutes} minutes and ${seconds} seconds`
+
+function myTimer(){
+   seconds = seconds + 1
+
+   if (seconds >= 60) {
+       minutes = minutes + 1
+       seconds = 0
+   }
+   document.getElementById("timer").innerText = `Timer: ${minutes} minutes and ${seconds} seconds`
+
+}
+  
 });
 
 function populate() {
@@ -258,6 +279,7 @@ document.onkeydown = function (event) {
       } else {
         console.log("finished")
         document.getElementById("modal").style.display = "none"
+        console.log(`${minutes} minutes and ${seconds} seconds`)
       }
     
       break;
@@ -302,25 +324,9 @@ document.getElementById("option2").addEventListener("click", function () {
 
 /*The myTimer function is for keeping track of how long the user takes to complete the flashcards. It adds 1 to a number variable and then using DOM manipulation, places that new number into the document every second.*/
 
-var timer = setInterval(myTimer,1000)
-
-var seconds = 0
-var minutes = 0
-
-document.getElementById("timer").innerText = `Timer: ${minutes} minutes and ${seconds} seconds`
-
-function myTimer(){
-   seconds = seconds + 1
-
-   if (seconds >= 60) {
-       minutes = minutes + 1
-       seconds = 0
-   }
-   
-   document.getElementById("timer").innerText = `Timer: ${minutes} minutes and ${seconds} seconds`
 
 
-}
 
-myTimer()
+
+/* The code below is for opening and closing the gallery. */
 

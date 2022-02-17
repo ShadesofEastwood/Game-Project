@@ -1,12 +1,12 @@
 h1 {
-    color:black;
+    color:cyan;
     text-align: center;
     font-size: 5em;
     font-family:'Franklin Gothic Medium';
 }
 
 body {
-    background-color:cyan;
+    background-color:black;
     text-align:center;
 }
 
@@ -29,7 +29,7 @@ body {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    background-color: black;
+    background-color: white;
     margin: 5% auto; 
     padding: 3em;
     border: 1px solid #888;
@@ -41,12 +41,15 @@ body {
 
 #question {
     grid-column: span 4/4;
+    
 }
+
 
 #option1 {
     grid-column: span 2/2;
    
 }
+
 #option2 {
     grid-column: span 2/4;
    
@@ -63,6 +66,7 @@ body {
     left:0;
     position: fixed;
     font-size:20px;
+    color:white;
 }
 
 #stopTime {
@@ -80,3 +84,14 @@ font-size:30px;
 background-color: black;
 color:white;
 }
+
+#galleryButton {
+    border-radius: 10px;
+font-size:30px;
+}
+
+#galleryButton:hover {
+background-color: black;
+color:white;
+}
+
