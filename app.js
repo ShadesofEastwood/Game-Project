@@ -3,17 +3,29 @@ console.log("ZA WARUDO");
 /* Using questions as a class object to tie the correct answer and images to what will be used to populate the modal.*/
 
 class questions {
-    constructor(question, answer1,answer2,answer3,answer4,key) {
+    constructor(question, answer1,answer2,answer3,answer4,key,title) {
       this.question = question
       this.answer1 = answer1
       this.answer2 = answer2
         this.answer3 = answer3
         this.answer4 = answer4
         this.key = key
+        this.title = title
     }
   }
   
   /* These are where the questions and images are created and stored into an array for easy access. */
+
+  const statGuide = document.createElement('img')
+
+  statGuide.src = "images/statsGuide.png"
+
+  statGuide.style.height = "200px"
+  statGuide.style.width = "200px"
+
+  document.getElementById("question").addEventListener("click", function () {
+document.getElementById("question").appendChild(statGuide)
+  })
 
   /* QUESTION 01 */
 
@@ -52,7 +64,7 @@ class questions {
   starplatinumstatsImage.style.height = "150px"
   starplatinumstatsImage.style.width = "150px"
 
-  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage, 4)
+  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage, 4, "Star Platinum")
 
   /* QUESTION 02 */
 
@@ -91,7 +103,7 @@ class questions {
   hermitpurplestatsImage.style.height = "150px"
   hermitpurplestatsImage.style.width = "150px"
 
-  question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2)
+  question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2, "Hermit Purple")
 
   const hierophantgreenImage = document.createElement('img')
 
@@ -128,7 +140,7 @@ class questions {
   gebImage.style.height = "150px"
   gebImage.style.width = "150px"
 
-  question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1)
+  question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1, "Hierophant Green")
 
 const magiciansredImage = document.createElement('img')
 
@@ -165,7 +177,7 @@ const magiciansredImage = document.createElement('img')
   khnumImage.style.height = "150px"
   khnumImage.style.width = "150px"
 
-  question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3)
+  question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3, "Magicians Red")
 
 silverchariotImage = document.createElement('img')
 
@@ -202,11 +214,11 @@ strengthImage.style. width = "150px"
 sunImage.style.height = "150px"
 sunImage.style.width = "150px"
 
-question5 = new questions(silverchariotImage, silverchariotstatsImage, loversImage, strengthImage, sunImage, 1)
+question5 = new questions(silverchariotImage, silverchariotstatsImage, loversImage, strengthImage, sunImage, 1, "Silver Chariot")
 
   questionArray = [question1,question2,question3,question4,question5]
 
-/* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. */
+/* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. It also is responsible for starting the timer that appears in the corner of the screen. */
 
 var seconds = 0
 var minutes = 0
@@ -235,6 +247,8 @@ function myTimer(){
 });
 
 function populate() {
+    document.getElementById("title").innerHTML = questionArray[questionArray.length - 1].title
+
     document.getElementById('question').appendChild(questionArray[questionArray.length - 1].question)
 
     document.getElementById("option1").appendChild(questionArray[questionArray.length - 1].answer1)
