@@ -261,7 +261,7 @@ function populate() {
 
 }
 
-/* This section below is how the user can operate the flash cards. Either switching to the next one or marking the flash card correct or incorrect.*/
+/* This section below is how the user can switch to the next question in the series. The function below is used to add onkeydown to the right key.*/
 
 function clearBox(elementID)
 {
@@ -272,8 +272,6 @@ document.onkeydown = function (event) {
   switch (event.keyCode) {
     case 37:
       console.log("Left key is pressed.");
-    
-      
       break;
     case 38:
       console.log("Up key is pressed.");
@@ -294,6 +292,7 @@ document.onkeydown = function (event) {
         console.log("finished")
         document.getElementById("modal").style.display = "none"
         console.log(`${minutes} minutes and ${seconds} seconds`)
+        console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
       }
     
       break;
@@ -305,42 +304,45 @@ document.onkeydown = function (event) {
   }
 };
 
-/* Below is for creating eventlisteners to select a choice for the questions. */
+/* Below is for creating eventlisteners to select a choice for the questions. As well as creating a variable to keep track of the correct and incorrect answers. */
+
+correctAnswers = 0
+incorrectAnswers = 0
+
 
 document.getElementById("option1").addEventListener("click", function () {
 if (questionArray[questionArray.length - 1].key !== 1) {
   alert("Incorrect!")
-} else { alert("Correct!")}
+  incorrectAnswers = incorrectAnswers + 1
+} else { alert("Correct!")
+correctAnswers = correctAnswers +1
+}
 })
 
 document.getElementById("option2").addEventListener("click", function () {
   if (questionArray[questionArray.length - 1].key !== 2) {
     alert("Incorrect!")
-  } else { alert("Correct!")}
+    incorrectAnswers = incorrectAnswers + 1
+  } else { alert("Correct!")
+  correctAnswers = correctAnswers +1
+}
   })
   
   document.getElementById("option3").addEventListener("click", function () {
     if (questionArray[questionArray.length - 1].key !== 3) {
       alert("Incorrect!")
-    } else { alert("Correct!")}
+      incorrectAnswers = incorrectAnswers + 1
+    } else { alert("Correct!")
+    correctAnswers = correctAnswers +1
+  }
     })
     
     document.getElementById("option4").addEventListener("click", function () {
       if (questionArray[questionArray.length - 1].key !== 4) {
         alert("Incorrect!")
-      } else { alert("Correct!")}
+        incorrectAnswers = incorrectAnswers + 1
+      } else { alert("Correct!")
+    correctAnswers = correctAnswers +1
+    }
       })
-      
-
-
-
-
-
-/*The myTimer function is for keeping track of how long the user takes to complete the flashcards. It adds 1 to a number variable and then using DOM manipulation, places that new number into the document every second.*/
-
-
-
-
-
-/* The code below is for opening and closing the gallery. */
-
+    
