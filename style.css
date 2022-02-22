@@ -93,13 +93,3 @@ background-color: black;
 color:white;
 }
 
-#galleryButton {
-    border-radius: 10px;
-font-size:30px;
-}
-
-#galleryButton:hover {
-background-color: black;
-color:white;
-}
-
