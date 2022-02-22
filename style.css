@@ -33,7 +33,7 @@ body {
     margin: 5% auto; 
     padding: 3em;
     border: 1px solid #888;
-    width: 50%;
+    width: auto;
     height: auto; 
     font-size:14px;
     border-radius: 20%;
@@ -89,6 +89,16 @@ font-size:30px;
 }
 
 #startButton:hover {
+background-color: black;
+color:white;
+}
+
+#galleryButton {
+    border-radius: 10px;
+font-size:30px;
+}
+
+#galleryButton:hover {
 background-color: black;
 color:white;
 }

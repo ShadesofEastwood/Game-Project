@@ -1,6 +1,7 @@
 console.log("ZA WARUDO");
 
-/* Using questions as a class object to tie the correct answer and images to what will be used to populate the modal.*/
+/* Using questions as a class object to connect the correct answer and images to what will be used to populate the modal.
+*/
 
 class questions {
     constructor(question, answer1,answer2,answer3,answer4,key,title) {
@@ -105,6 +106,8 @@ document.getElementById("question").appendChild(statGuide)
 
   question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2, "Hermit Purple")
 
+  /* QUESTION 03 */
+
   const hierophantgreenImage = document.createElement('img')
 
   const hangedmanImage = document.createElement('img')
@@ -141,6 +144,8 @@ document.getElementById("question").appendChild(statGuide)
   gebImage.style.width = "150px"
 
   question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1, "Hierophant Green")
+
+/* QUESTION 04 */
 
 const magiciansredImage = document.createElement('img')
 
@@ -179,6 +184,8 @@ const magiciansredImage = document.createElement('img')
 
   question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3, "Magicians Red")
 
+  /* QUESTION 05 */
+
 silverchariotImage = document.createElement('img')
 
 silverchariotstatsImage = document.createElement('img')
@@ -216,9 +223,11 @@ sunImage.style.width = "150px"
 
 question5 = new questions(silverchariotImage, silverchariotstatsImage, loversImage, strengthImage, sunImage, 1, "Silver Chariot")
 
+/* FINAL QUESTION ARRAY */
+
   questionArray = [question1,question2,question3,question4,question5]
 
-/* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. It also is responsible for starting the timer that appears in the corner of the screen. */
+/* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. It also is responsible for starting the timer that appears in the corner of the screen. This is because the timer begins when the game starts and begins to poulate the modal. */
 
 var seconds = 0
 var minutes = 0
@@ -261,26 +270,110 @@ function populate() {
 
 }
 
-/* This section below is how the user can switch to the next question in the series. The function below is used to add onkeydown to the right key.*/
+/* The clearBox function is called when it is time to empty the modal of the previous images and answers and fill it with the next questions images in the series. */
 
 function clearBox(elementID)
 {
     document.getElementById(elementID).innerHTML = "";
 }
 
-document.onkeydown = function (event) {
-  switch (event.keyCode) {
-    case 37:
-      console.log("Left key is pressed.");
-      break;
-    case 38:
-      console.log("Up key is pressed.");
-  
-      break;
-    case 39:
-      console.log("Right key is pressed.")
+/* The correct and incorrect answers variables are an easy way to keep track of the users correct and incorrect answers. */
 
-      if (questionArray.length > 1) {
+
+correctAnswers = 0
+incorrectAnswers = 0
+
+/* The event listensers below are used to determine whether or not the user has selected the correct answer upon clicking an image. The functions are based on whether or not there is another question in the series. If there is not then the finals answers, time, and finish alert will be called instead of populating the modal with the next question. */
+
+
+document.getElementById("option1").addEventListener("click", function () {
+if (questionArray[questionArray.length - 1].key !== 1) {
+  alert("Incorrect!")
+  incorrectAnswers = incorrectAnswers + 1
+} else { alert("Correct!")
+correctAnswers = correctAnswers +1
+}
+
+
+if (questionArray.length > 1) {
+  questionArray.pop()
+  clearBox("question")
+  clearBox("option1")
+  clearBox("option2")
+  clearBox("option3")
+  clearBox("option4")
+  populate()
+  } else {
+    console.log("finished")
+    document.getElementById("modal").style.display = "none"
+    console.log(`${minutes} minutes and ${seconds} seconds`)
+    console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
+  }
+
+})
+
+document.getElementById("option2").addEventListener("click", function () {
+  if (questionArray[questionArray.length - 1].key !== 2) {
+    alert("Incorrect!")
+    incorrectAnswers = incorrectAnswers + 1
+  } else { alert("Correct!")
+  correctAnswers = correctAnswers +1
+}
+
+
+if (questionArray.length > 1) {
+  questionArray.pop()
+  clearBox("question")
+  clearBox("option1")
+  clearBox("option2")
+  clearBox("option3")
+  clearBox("option4")
+  populate()
+  } else {
+    console.log("finished")
+    document.getElementById("modal").style.display = "none"
+    console.log(`${minutes} minutes and ${seconds} seconds`)
+    console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
+  }
+
+  })
+  
+  document.getElementById("option3").addEventListener("click", function () {
+    if (questionArray[questionArray.length - 1].key !== 3) {
+      alert("Incorrect!")
+      incorrectAnswers = incorrectAnswers + 1
+    } else { alert("Correct!")
+    correctAnswers = correctAnswers +1
+  }
+
+
+  if (questionArray.length > 1) {
+    questionArray.pop()
+    clearBox("question")
+    clearBox("option1")
+    clearBox("option2")
+    clearBox("option3")
+    clearBox("option4")
+    populate()
+    } else {
+      console.log("finished")
+      document.getElementById("modal").style.display = "none"
+      console.log(`${minutes} minutes and ${seconds} seconds`)
+      console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
+    }
+
+    })
+    
+    document.getElementById("option4").addEventListener("click", function () {
+      if (questionArray[questionArray.length - 1].key !== 4) {
+        alert("Incorrect!")
+        incorrectAnswers = incorrectAnswers + 1
+      } else { alert("Correct!")
+    correctAnswers = correctAnswers +1
+    }
+
+
+    if (questionArray.length > 1) {
       questionArray.pop()
       clearBox("question")
       clearBox("option1")
@@ -294,55 +387,31 @@ document.onkeydown = function (event) {
         console.log(`${minutes} minutes and ${seconds} seconds`)
         console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
       }
-    
-      break;
-    case 40:
-      console.log("Down key is pressed.");
-    
-      break;
-      
-  }
-};
 
-/* Below is for creating eventlisteners to select a choice for the questions. As well as creating a variable to keep track of the correct and incorrect answers. */
-
-correctAnswers = 0
-incorrectAnswers = 0
-
-
-document.getElementById("option1").addEventListener("click", function () {
-if (questionArray[questionArray.length - 1].key !== 1) {
-  alert("Incorrect!")
-  incorrectAnswers = incorrectAnswers + 1
-} else { alert("Correct!")
-correctAnswers = correctAnswers +1
-}
-})
-
-document.getElementById("option2").addEventListener("click", function () {
-  if (questionArray[questionArray.length - 1].key !== 2) {
-    alert("Incorrect!")
-    incorrectAnswers = incorrectAnswers + 1
-  } else { alert("Correct!")
-  correctAnswers = correctAnswers +1
-}
-  })
-  
-  document.getElementById("option3").addEventListener("click", function () {
-    if (questionArray[questionArray.length - 1].key !== 3) {
-      alert("Incorrect!")
-      incorrectAnswers = incorrectAnswers + 1
-    } else { alert("Correct!")
-    correctAnswers = correctAnswers +1
-  }
-    })
-    
-    document.getElementById("option4").addEventListener("click", function () {
-      if (questionArray[questionArray.length - 1].key !== 4) {
-        alert("Incorrect!")
-        incorrectAnswers = incorrectAnswers + 1
-      } else { alert("Correct!")
-    correctAnswers = correctAnswers +1
-    }
       })
     
+/* GALLERY FUNCTION */
+
+galleryArray = [anubisImage,darkbluemoonImage,deathImage,ebonydevilImage,emperorImage,empressImage,gebImage,hangedmanImage,hermitpurplestatsImage,hierophantgreenstatsImage,highpriestessImage,judgementImage,justiceImage,khnumImage,loversImage,magiciansredstatsImage,silverchariotstatsImage,starplatinumstatsImage,strengthImage,sunImage]
+
+document.getElementById("galleryButton").addEventListener("click", function () {
+
+  document.getElementById("modal").style.display = "block"
+  document.getElementById("title").innerHTML = ""
+  document.getElementById("option1").innerHTML = ""
+  document.getElementById("option2").innerHTML = ""
+  document.getElementById("option3").innerHTML = ""
+  document.getElementById("option4").innerHTML = ""
+
+  document.getElementById("option1").style.gridColumn = "span 1/1"
+  document.getElementById("option2").style.gridColumn = "span 1/2"
+  document.getElementById("option3").style.gridColumn = "span 1/3"
+  document.getElementById("option4").style.gridColumn = "span 1/4"
+ 
+  for (i = 1; i <= 20; i++) {
+    console.log(`option${i}`)
+    document.getElementById(`option${i}`).appendChild(galleryArray[galleryArray.length - 1])
+    galleryArray.pop()
+  }
+
+})
