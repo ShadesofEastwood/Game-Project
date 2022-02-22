@@ -1,5 +1,8 @@
 console.log("ZA WARUDO");
 
+var gallery = "closed"
+
+
 /* Using questions as a class object to connect the correct answer and images to what will be used to populate the modal.
 */
 
@@ -308,6 +311,7 @@ if (questionArray.length > 1) {
     document.getElementById("modal").style.display = "none"
     console.log(`${minutes} minutes and ${seconds} seconds`)
     console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
+    document.getElementById("question").innerHTML = ""
   }
 
 })
@@ -391,6 +395,7 @@ if (questionArray.length > 1) {
       })
     
 /* GALLERY FUNCTION */
+gallery = "open"
 
 galleryArray = [anubisImage,darkbluemoonImage,deathImage,ebonydevilImage,emperorImage,empressImage,gebImage,hangedmanImage,hermitpurplestatsImage,hierophantgreenstatsImage,highpriestessImage,judgementImage,justiceImage,khnumImage,loversImage,magiciansredstatsImage,silverchariotstatsImage,starplatinumstatsImage,strengthImage,sunImage]
 
@@ -413,5 +418,33 @@ document.getElementById("galleryButton").addEventListener("click", function () {
     document.getElementById(`option${i}`).appendChild(galleryArray[galleryArray.length - 1])
     galleryArray.pop()
   }
+
+document.getElementById("close").addEventListener("click", function () {
+if (gallery == "open") {
+  document.getElementById("modal").style.display = "none"
+
+  document.getElementById("option1").innerHTML = "1"
+  document.getElementById("option2").innerHTML = "2"
+  document.getElementById("option3").innerHTML = "3"
+  document.getElementById("option4").innerHTML = "4"
+
+  for (i = 5; i <= 20; i++) {
+    document.getElementById(`option${i}`).innerHTML = ""
+  }
+
+document.getElementById("option1").style.gridColumn = "span 2/2"
+document.getElementById("option2").style.gridColumn = "span 2/4"
+document.getElementById("option3").style.gridColumn = "span 2/2"
+document.getElementById("option4").style.gridColumn = "span 2/4"
+document.getElementById("question").innerHTML = ""
+
+
+}
+
+gallery = "closed"
+
+
+
+})
 
 })

@@ -103,3 +103,9 @@ background-color: black;
 color:white;
 }
 
+#close {
+    position: relative;
+    top: -16px;
+    right: -706px;
+}
+
