@@ -250,35 +250,36 @@ function clearBox(elementID)
 
 /* The event listensers below are used to determine whether or not the user has selected the correct answer upon clicking an image. The functions are based on whether or not there is another question in the series. If there is not then the finals answers, time, and finish alert will be called instead of populating the modal with the next question. */
 
-
-document.getElementById("option1").addEventListener("click", function () {
-if (questionArray[questionArray.length - 1].key !== 1) {
-  alert("Incorrect!")
-  incorrectAnswers = incorrectAnswers + 1
-} else { alert("Correct!")
-correctAnswers = correctAnswers +1
-}
-
-
-if (questionArray.length > 1) {
-  questionArray.pop()
-  clearBox("question")
-  clearBox("option1")
-  clearBox("option2")
-  clearBox("option3")
-  clearBox("option4")
-  populate()
-  } else {
-    console.log("finished")
-    document.getElementById("modal").style.display = "none"
-    console.log(`${minutes} minutes and ${seconds} seconds`)
-    console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
-    document.getElementById("question").innerHTML = ""
+var option1 = document.getElementById("option1")
+function handleoption1click() {
+  if (questionArray[questionArray.length - 1].key !== 1) {
+    alert("Incorrect!")
+    incorrectAnswers = incorrectAnswers + 1
+  } else { alert("Correct!")
+  correctAnswers = correctAnswers +1
   }
+  
+  
+  if (questionArray.length > 1) {
+    questionArray.pop()
+    clearBox("question")
+    clearBox("option1")
+    clearBox("option2")
+    clearBox("option3")
+    clearBox("option4")
+    populate()
+    } else {
+      console.log("finished")
+      document.getElementById("modal").style.display = "none"
+      console.log(`${minutes} minutes and ${seconds} seconds`)
+      console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
+      document.getElementById("question").innerHTML = ""
+    }
+}
+option1.addEventListener("click", handleoption1click, true)
 
-})
-
-document.getElementById("option2").addEventListener("click", function () {
+var option2 = document.getElementById("option2")
+function handleoption2click() {
   if (questionArray[questionArray.length - 1].key !== 2) {
     alert("Incorrect!")
     incorrectAnswers = incorrectAnswers + 1
@@ -302,66 +303,79 @@ if (questionArray.length > 1) {
     console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
   }
 
-  })
+}
+option2.addEventListener("click",handleoption2click,true)
   
-  document.getElementById("option3").addEventListener("click", function () {
-    if (questionArray[questionArray.length - 1].key !== 3) {
-      alert("Incorrect!")
-      incorrectAnswers = incorrectAnswers + 1
-    } else { alert("Correct!")
-    correctAnswers = correctAnswers +1
+var option3 = document.getElementById("option3")
+function handleoption3click () {
+  if (questionArray[questionArray.length - 1].key !== 3) {
+    alert("Incorrect!")
+    incorrectAnswers = incorrectAnswers + 1
+  } else { alert("Correct!")
+  correctAnswers = correctAnswers +1
+}
+
+
+if (questionArray.length > 1) {
+  questionArray.pop()
+  clearBox("question")
+  clearBox("option1")
+  clearBox("option2")
+  clearBox("option3")
+  clearBox("option4")
+  populate()
+  } else {
+    console.log("finished")
+    document.getElementById("modal").style.display = "none"
+    console.log(`${minutes} minutes and ${seconds} seconds`)
+    console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
   }
 
+}
+option3.addEventListener("click",handleoption3click,true)
 
-  if (questionArray.length > 1) {
-    questionArray.pop()
-    clearBox("question")
-    clearBox("option1")
-    clearBox("option2")
-    clearBox("option3")
-    clearBox("option4")
-    populate()
-    } else {
-      console.log("finished")
-      document.getElementById("modal").style.display = "none"
-      console.log(`${minutes} minutes and ${seconds} seconds`)
-      console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
-    }
-
-    })
-    
-    document.getElementById("option4").addEventListener("click", function () {
-      if (questionArray[questionArray.length - 1].key !== 4) {
-        alert("Incorrect!")
-        incorrectAnswers = incorrectAnswers + 1
-      } else { alert("Correct!")
-    correctAnswers = correctAnswers +1
-    }
+var option4 = document.getElementById("option4")
+function handleoption4click () {
+  if (questionArray[questionArray.length - 1].key !== 4) {
+    alert("Incorrect!")
+    incorrectAnswers = incorrectAnswers + 1
+  } else { alert("Correct!")
+correctAnswers = correctAnswers +1
+}
 
 
-    if (questionArray.length > 1) {
-      questionArray.pop()
-      clearBox("question")
-      clearBox("option1")
-      clearBox("option2")
-      clearBox("option3")
-      clearBox("option4")
-      populate()
-      } else {
-        console.log("finished")
-        document.getElementById("modal").style.display = "none"
-        console.log(`${minutes} minutes and ${seconds} seconds`)
-        console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
-      }
-
-      })
+if (questionArray.length > 1) {
+  questionArray.pop()
+  clearBox("question")
+  clearBox("option1")
+  clearBox("option2")
+  clearBox("option3")
+  clearBox("option4")
+  populate()
+  } else {
+    console.log("finished")
+    document.getElementById("modal").style.display = "none"
+    console.log(`${minutes} minutes and ${seconds} seconds`)
+    console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
+  }
+}
+    option4.addEventListener("click",handleoption4click,true)
     
 /* GALLERY FUNCTION */
 
 
 document.getElementById("galleryButton").addEventListener("click", function () {
 
+  fullGallery = galleryArray
+
   gallery = "open"
+  document.getElementById("question").innerHTML = ""
+
+
+  option1.removeEventListener("click", handleoption1click, true)
+  option2.removeEventListener("click", handleoption2click, true)
+  option3.removeEventListener("click", handleoption3click, true)
+  option4.removeEventListener("click", handleoption4click, true)
 
 
   document.getElementById("modal").style.display = "block"
@@ -377,13 +391,20 @@ document.getElementById("galleryButton").addEventListener("click", function () {
   document.getElementById("option4").style.gridColumn = "span 1/4"
  
   for (i = 1; i <= 20; i++) {
-    document.getElementById(`option${i}`).appendChild(galleryArray[galleryArray.length - 1])
-    galleryArray.pop()
+    document.getElementById(`option${i}`).appendChild(galleryArray[galleryArray.length - i])
   }
 
 document.getElementById("close").addEventListener("click", function () {
 if (gallery == "open") {
   document.getElementById("modal").style.display = "none"
+
+
+  option1.addEventListener("click", handleoption1click, true)
+  option2.addEventListener("click", handleoption2click, true)
+  option3.addEventListener("click", handleoption3click, true)
+  option4.addEventListener("click", handleoption4click, true)
+
+
 
   document.getElementById("option1").innerHTML = "1"
   document.getElementById("option2").innerHTML = "2"
@@ -398,14 +419,11 @@ document.getElementById("option1").style.gridColumn = "span 2/2"
 document.getElementById("option2").style.gridColumn = "span 2/4"
 document.getElementById("option3").style.gridColumn = "span 2/2"
 document.getElementById("option4").style.gridColumn = "span 2/4"
-document.getElementById("question").innerHTML = ""
 
 
 }
 
 gallery = "closed"
-
-
 
 })
 
