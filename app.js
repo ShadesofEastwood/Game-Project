@@ -12,7 +12,7 @@ incorrectAnswers = 0
 */
 
 class questions {
-    constructor(question, answer1,answer2,answer3,answer4,key,title) {
+    constructor(question, answer1,answer2,answer3,answer4,key,title,theme) {
       this.question = question
       this.answer1 = answer1
       this.answer2 = answer2
@@ -20,6 +20,7 @@ class questions {
         this.answer4 = answer4
         this.key = key
         this.title = title
+        this.theme = theme
     }
   }
   
@@ -66,7 +67,7 @@ function question1Creation () {
 
   galleryArray.push(anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage)
 
-  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage, 4, "Star Platinum")
+  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage, 4, "Star Platinum","slateblue")
 
 }
 question1Creation()
@@ -94,7 +95,7 @@ question1Creation()
     empressImage.style.width = "150px"
     hermitpurplestatsImage.style.height = "150px"
     hermitpurplestatsImage.style.width = "150px"
-    question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2, "Hermit Purple")
+    question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2, "Hermit Purple","mediumvioletred")
 
     galleryArray.push(ebonydevilImage,emperorImage,empressImage,hermitpurplestatsImage)
 
@@ -125,7 +126,7 @@ question2Creation()
     hierophantgreenstatsImage.style.width = "150px"
     gebImage.style.height = "150px"
     gebImage.style.width = "150px"
-    question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1, "Hierophant Green")
+    question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1, "Hierophant Green","greenyellow")
 
     galleryArray.push(hangedmanImage,highpriestessImage,hierophantgreenstatsImage,gebImage)
 
@@ -155,7 +156,7 @@ magiciansredstatsImage.style.height = "150px"
 magiciansredstatsImage.style.width = "150px"
 khnumImage.style.height = "150px"
 khnumImage.style.width = "150px"
-question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3, "Magicians Red")
+question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3, "Magicians Red","indianred")
 
 galleryArray.push(judgementImage,justiceImage,magiciansredstatsImage,khnumImage)
 
@@ -185,7 +186,7 @@ strengthImage.style.height = "150px"
 strengthImage.style. width = "150px"
 sunImage.style.height = "150px"
 sunImage.style.width = "150px"
-question5 = new questions(silverchariotImage, silverchariotstatsImage, loversImage, strengthImage, sunImage, 1, "Silver Chariot")
+question5 = new questions(silverchariotImage, silverchariotstatsImage, loversImage, strengthImage, sunImage, 1, "Silver Chariot","aquamarine")
 
 galleryArray.push(loversImage,strengthImage,sunImage,silverchariotstatsImage)
   }
@@ -201,9 +202,11 @@ arrayCreation()
   
 /* These DOM manipulation are for opening the modal and loading the modal with content fom our arrays. It also is responsible for starting the timer that appears in the corner of the screen. This is because the timer begins when the game starts and begins to poulate the modal. */
 
-
-
 document.getElementById("startButton").addEventListener("click", function () {
+  alert("In JoJo's Bizarre Adventure, stands are manifestations of a persons soul. They have a series of statistics that are used to classify and determine a stands particular strengths and weaknesses. You must select the correct stat circle to the shown stand. Good luck!")
+
+  statFilter.addEventListener("mousemove", handlemouseMove, true);
+
   document.getElementById("modal").style.display = "block";
   populate();
 
@@ -239,9 +242,9 @@ function populate() {
 
     document.getElementById("option4").appendChild(questionArray[questionArray.length - 1].answer4)
 
-}
+    document.getElementById("modal-content").style.backgroundColor = questionArray[questionArray.length - 1].theme
 
-/* The clearBox function is called when it is time to empty the modal of the previous images and answers and fill it with the next questions images in the series. */
+}
 
 function clearBox(elementID)
 {
@@ -366,7 +369,12 @@ if (questionArray.length > 1) {
 
 document.getElementById("galleryButton").addEventListener("click", function () {
 
+  statFilter.style.filter = "none"
+  statFilter.removeEventListener("mousemove", handlemouseMove, true);  
+
   fullGallery = galleryArray
+
+  document.getElementById("modal-content").style.backgroundColor = "white"
 
   gallery = "open"
   document.getElementById("question").innerHTML = ""
@@ -429,4 +437,23 @@ gallery = "closed"
 
 })
 
-/* Experimental */
+/* Image Filter*/
+
+const backgroundFilter = document.querySelector('img')
+
+backgroundFilter.addEventListener("mousemove", (e) => {
+ 
+    backgroundFilter.style.filter = `hue-rotate(${e.offsetX}deg)`
+  
+});
+
+const statFilter = document.getElementById("modal-content")
+
+function handlemouseMove(e) {
+  statFilter.style.filter = `hue-rotate(${e.offsetX}deg)`
+}
+  statFilter.addEventListener("mousemove", handlemouseMove, true);
+
+
+
+
