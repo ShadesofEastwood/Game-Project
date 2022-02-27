@@ -51,9 +51,13 @@ function question1Creation () {
   const starplatinumstatsImage = document.createElement('img')
   starplatinumImage.src= "images/starPlatinum.png"
   anubisImage.src = "images/anubisStats.png"
+  anubisImage.title = "Anubis"
   darkbluemoonImage.src = "images/darkbluemoonStats.png"
+  darkbluemoonImage.title = "Dark Blue Moon"
   deathImage.src = "images/deathStats.png"
+  deathImage.title = "Death"
   starplatinumstatsImage.src = "images/starplatinumStats.png"
+  starplatinumstatsImage.title = "Star Platinum"
   starplatinumImage.style.height = "240px"
   starplatinumImage.style.width = "200px"
   anubisImage.style.height = "150px"
@@ -67,7 +71,7 @@ function question1Creation () {
 
   galleryArray.push(anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage)
 
-  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage, 4, "Star Platinum","slateblue")
+  question1 = new questions(starplatinumImage, anubisImage,darkbluemoonImage,deathImage,starplatinumstatsImage, 4, "Star Platinum","aquamarine")
 
 }
 question1Creation()
@@ -82,9 +86,13 @@ question1Creation()
     const hermitpurplestatsImage = document.createElement('img')
     hermitpurpleImage.src = "images/hermitPurple.png"
     ebonydevilImage.src = "images/ebonydevilStats.png"
+    ebonydevilImage.title = "Ebony Devil"
     emperorImage.src = "images/emperorStats.png"
+    emperorImage.title = "Emperor"
     empressImage.src = "images/empressStats.png"
+    empressImage.title = "Empress"
     hermitpurplestatsImage.src = "images/hermitpurpleStats.png"
+    hermitpurplestatsImage.title = "Hermit Purple"
     hermitpurpleImage.style.height = "260px"
     hermitpurpleImage.style.width = "230px"
     ebonydevilImage.style.height = "150px"
@@ -95,7 +103,7 @@ question1Creation()
     empressImage.style.width = "150px"
     hermitpurplestatsImage.style.height = "150px"
     hermitpurplestatsImage.style.width = "150px"
-    question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2, "Hermit Purple","mediumvioletred")
+    question2 = new questions(hermitpurpleImage,ebonydevilImage,hermitpurplestatsImage,emperorImage,empressImage, 2, "Hermit Purple","aquamarine")
 
     galleryArray.push(ebonydevilImage,emperorImage,empressImage,hermitpurplestatsImage)
 
@@ -113,9 +121,13 @@ question2Creation()
     const gebImage = document.createElement('img')
     hierophantgreenImage.src = "images/hierophantGreen.png"
     hangedmanImage.src = "images/hangedmanStats.png"
+    hangedmanImage.title = "Hanged Man"
     highpriestessImage.src = "images/highpriestessStats.png"
+    highpriestessImage.title = "High Priestess"
     hierophantgreenstatsImage.src = "images/hierophantgreenStats.png"
+    hierophantgreenstatsImage.title = "Hierophant Green"
     gebImage.src = "images/gebStats.png"
+    gebImage.title = "Geb"
     hierophantgreenImage.style.height = "240px"
     hierophantgreenImage.style.width = "200px"
     hangedmanImage.style.height = "150px"
@@ -126,7 +138,7 @@ question2Creation()
     hierophantgreenstatsImage.style.width = "150px"
     gebImage.style.height = "150px"
     gebImage.style.width = "150px"
-    question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1, "Hierophant Green","greenyellow")
+    question3 = new questions(hierophantgreenImage, hierophantgreenstatsImage,highpriestessImage,gebImage,hangedmanImage,1, "Hierophant Green","aquamarine")
 
     galleryArray.push(hangedmanImage,highpriestessImage,hierophantgreenstatsImage,gebImage)
 
@@ -143,9 +155,13 @@ const magiciansredstatsImage = document.createElement('img')
 const khnumImage = document.createElement('img')
 magiciansredImage.src = "images/magiciansRed.png"
 judgementImage.src = "images/judgementStats.png"
+judgementImage.title = "Judgement"
 justiceImage.src = "images/justiceStats.png"
+justiceImage.title = "Justice"
 magiciansredstatsImage.src = "images/magiciansredStats.png"
+magiciansredstatsImage.title = "Magician's Red"
 khnumImage.src = "images/khnumStats.png"
+khnumImage.title = "Khnum"
 magiciansredImage.style.height = "240px"
 magiciansredImage.style.width = "200px"
 judgementImage.style.height = "150px"
@@ -156,7 +172,7 @@ magiciansredstatsImage.style.height = "150px"
 magiciansredstatsImage.style.width = "150px"
 khnumImage.style.height = "150px"
 khnumImage.style.width = "150px"
-question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3, "Magicians Red","indianred")
+question4 = new questions(magiciansredImage, khnumImage, justiceImage, magiciansredstatsImage, judgementImage,3, "Magicians Red","aquamarine")
 
 galleryArray.push(judgementImage,justiceImage,magiciansredstatsImage,khnumImage)
 
@@ -166,16 +182,20 @@ question4Creation()
   /* QUESTION 05 */
 
   function question5Creation () {
-    silverchariotImage = document.createElement('img')
-silverchariotstatsImage = document.createElement('img')
-loversImage = document.createElement('img')
+  silverchariotImage = document.createElement('img')
+  silverchariotstatsImage = document.createElement('img')
+  loversImage = document.createElement('img')
 strengthImage = document.createElement('img')
 sunImage = document.createElement('img')
 silverchariotImage.src = "images/silverChariot.png"
 silverchariotstatsImage.src = "images/silverchariotStats.png"
+silverchariotstatsImage.title = "Silver Chariot"
 loversImage.src = "images/loversStats.png"
+loversImage.title = "Lovers"
 strengthImage.src = "images/strengthStats.png"
+strengthImage.title = "Strength"
 sunImage.src = "images/thesunStats.png"
+sunImage.title = "Sun"
 silverchariotImage.style.height = "240px"
 silverchariotImage.style.width = "220px"
 silverchariotstatsImage.style.height = "150px"
@@ -205,6 +225,8 @@ arrayCreation()
 document.getElementById("startButton").addEventListener("click", function () {
   alert("In JoJo's Bizarre Adventure, stands are manifestations of a persons soul. They have a series of statistics that are used to classify and determine a stands particular strengths and weaknesses. You must select the correct stat circle to the shown stand. Good luck!")
 
+  backgroundFilter.style.filter = "none"
+
   statFilter.addEventListener("mousemove", handlemouseMove, true);
 
   document.getElementById("modal").style.display = "block";
@@ -228,6 +250,8 @@ function myTimer(){
 }
   
 });
+
+
 
 function populate() {
     document.getElementById("title").innerHTML = questionArray[questionArray.length - 1].title
@@ -272,7 +296,7 @@ function handleoption1click() {
     clearBox("option4")
     populate()
     } else {
-      console.log("finished")
+      alert(`You have finished the game! You finished in ${minutes} minutes and ${seconds} seconds. You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
       document.getElementById("modal").style.display = "none"
       console.log(`${minutes} minutes and ${seconds} seconds`)
       console.log(`You got ${correctAnswers} answers correct and ${incorrectAnswers} answers incorrect.`)
@@ -369,6 +393,11 @@ if (questionArray.length > 1) {
 
 document.getElementById("galleryButton").addEventListener("click", function () {
 
+  document.getElementById("modal-content").style.width = "auto"
+
+backgroundFilter.style.filter = "none"
+  backgroundFilter.removeEventListener("mousemove", handlebackgroundFilter, true)
+
   statFilter.style.filter = "none"
   statFilter.removeEventListener("mousemove", handlemouseMove, true);  
 
@@ -387,7 +416,7 @@ document.getElementById("galleryButton").addEventListener("click", function () {
 
 
   document.getElementById("modal").style.display = "block"
-  document.getElementById("title").innerHTML = ""
+  document.getElementById("title").innerHTML = `Gallery`
   document.getElementById("option1").innerHTML = ""
   document.getElementById("option2").innerHTML = ""
   document.getElementById("option3").innerHTML = ""
@@ -404,6 +433,11 @@ document.getElementById("galleryButton").addEventListener("click", function () {
 
 document.getElementById("close").addEventListener("click", function () {
 if (gallery == "open") {
+
+  document.getElementById("modal-content").style.width = "60%"
+
+  backgroundFilter.addEventListener("mousemove", handlebackgroundFilter, true)
+
   document.getElementById("modal").style.display = "none"
 
 
@@ -437,20 +471,19 @@ gallery = "closed"
 
 })
 
-/* Image Filter*/
+/* Image Filters*/
 
-const backgroundFilter = document.querySelector('img')
+const backgroundFilter = document.querySelector("html")
+function handlebackgroundFilter(e) {
+  backgroundFilter.style.filter = `hue-rotate(${e.offsetX/3}deg)`
+}
 
-backgroundFilter.addEventListener("mousemove", (e) => {
- 
-    backgroundFilter.style.filter = `hue-rotate(${e.offsetX}deg)`
-  
-});
+backgroundFilter.addEventListener("mousemove", handlebackgroundFilter, true);
 
 const statFilter = document.getElementById("modal-content")
 
 function handlemouseMove(e) {
-  statFilter.style.filter = `hue-rotate(${e.offsetX}deg)`
+  statFilter.style.filter = `hue-rotate(${e.offsetX/3}deg)`
 }
   statFilter.addEventListener("mousemove", handlemouseMove, true);
 
